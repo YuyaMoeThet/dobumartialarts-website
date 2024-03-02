@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Register</title>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule</title>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="websitestyle.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+	  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
+            <a href="" class="navbar-brand p-0">
+                <h1 class=""><img src="img/logo.png" alt="WebSpace Logo" class="logo">Dobu Martial Arts</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0 pe-4">
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="About.html" class="nav-item nav-link">About Us</a>
+                    <a href="Classes.html" class="nav-item nav-link">Classes</a>
+                    <a href="Special.html" class="nav-item nav-link">Special Courses</a>
+                    <a href="Schedule.html" class="nav-item nav-link">Schedule</a>
+                    <a href="Instructors.html" class="nav-item nav-link">Instructors</a>
+                    <a href="Contact.html" class="nav-item nav-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<body>
+  <section class="submit" id="submit">
+        <h1 style="text-align: center;" class="heading">Martial Arts Registration Form</h1>
+        <form action="">
+          <div class="inputBox">
+            <div class="input">
+              <span>First Name</span>
+              <input class="text" id="fName" placeholder="enter your first name">
+            </div>
+                <div class="input">
+                    <span>Last Name</span>
+                    <input class="text" id="lName" placeholder="enter your last name">
+                </div>
+              
+              <div class="input">
+              <span>Date Of Birth</span>
+              <input type="datetime-local" id="dob">
+            </div>
+            <div class="input">
+              <span>Email</span>
+              <input type="text" id="email" placeholder="enter your email">
+            </div>
+              <div class="input">
+                    <span>Number</span>
+                    <input class="text" id="number" placeholder="enter your phone number">
+                </div>
+                <div class="input">
+                    <span>City</span>
+                    <input type="text" id="city" placeholder="enter your city">
+                </div>
+                <div class="input">
+                    <span>Pin Code</span>
+                    <input type="text" id="pin" placeholder="enter your pin code">
+                </div>
+                <div class="input">
+                    <span>State</span>
+                    <input type="text" id="state" placeholder="enter your state">
+                </div>
+                <div class="input">
+                    <span>Country</span>
+                    <input type="text" id="country" placeholder="enter your country">
+                </div>
+          </div>  
+
+          <div class="inputBox">
+            <div class="input">
+              <span>Address</span>
+              <textarea name="" placeholder="enter your address" id="address" cols="30" rows="10"></textarea>
+            </div>   
+            <div class="input">
+                    <span>Do you have any medical history or conditions that could affect your ability to participate in contact sports?</span>
+                    <textarea name="" placeholder="explain your condition" id="condition" cols="30" rows="10"></textarea>
+                </div>
+                     
+              </div>
+              <table>
+              <div class="form-group">
+              <label for="gender">Gender</label>
+                <select id="gender" name="gender" required>
+                    <option value="male" name="gender">Male</option>
+                    <option value="female" name="gender">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+              <label for="check">Have you taken any martial arts classes before?</label>
+                <select id="check" name="check" required>
+                    <option value="yes" name="check">Yes</option>
+                    <option value="no" name="check">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+              <label for="hear">Where did you hear about us?</label>
+                <select id="hear" name="hear" required>
+                    <option value="friend" name="hear">A Friend or colleague</option>
+                    <option value="online" name="hear">Online Search (Google, Bing, Yahoo)</option>
+                    <option value="website" name="hear">Martial Arts Website</option>
+                    <option value="local" name="hear">Local Activities Listing</option>
+                    <option value="news" name="hear">News Article</option>
+                </select>
+            </div>
+                
+             
+              </table>
+           <div class="input-box button">
+        <input type="submit" value="Submit" onclick="saveFormData(event)">
+      </div>
+           <input type="reset">
+        </form>
+    </section>
+
+<script>
+    function saveFormData(event) {
+  event.preventDefault(); // Prevent form submission
+
+  // Get form values
+  var userId =  Date.now().toString(36) + Math.random().toString(36).substr(2);
+  var fName = document.getElementById('fName').value; 
+  var lName = document.getElementById('lName').value;
+  var dob = document.getElementById('dob').value; // Corrected ID
+  var email = document.getElementById('email').value;
+  var number = document.getElementById('number').value;
+  var city = document.getElementById('city').value;
+  var pin = document.getElementById('pin').value;
+  var state = document.getElementById('state').value;
+  var country = document.getElementById('country').value;
+  var address = document.getElementById('address').value;
+  var condition = document.getElementById('condition').value;
+  var gender = document.getElementById('gender').value;
+  var check = document.getElementById('check').value;
+  var hear = document.getElementById('hear').value;
+  
+
+  // Create an object to store the form data
+  var formData = {
+    userId: userId,
+    fName: fName,
+    lName: lName,
+    dob: dob,
+    email: email,
+    number: number,
+    city: city,
+    pin: pin,
+    state: state,
+    country: country,
+    address: address,
+    condition: condition,
+    gender: gender,
+    check: check,
+    hear: hear
+  };
+
+  
+
+  // Retrieve existing form data from local storage
+  var allFormData = JSON.parse(localStorage.getItem('allFormData')) || [];
+
+
+   
+  // Append the new form data to the existing array
+  allFormData.push(formData);
+
+
+
+  // Save the updated form data array to local storage
+  window.localStorage.setItem('allFormData', JSON.stringify(allFormData));
+
+  // Redirect to Thanks.html
+  window.location.href = 'Thanks.html';
+}
+
+</script>
+    <!-- Footer -->
+  <div
+  class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn"
+  id="contact">
+    <div class="copyright">
+      <div class="row">
+        <div class="col-md-8 text-center text-md-start mb-3 mb-md-0">
+         <a class="border-bottom" href="#"> &copy;Dobu Martial Arts</a> | All Right Reserved.
+        </div>
+        <div class="d-flex col" >
+          <h3>Follow Us>>></h3>
+          <a class="btn btn-outline-light btn-social"
+            href="https://twitter.com/"><i class="fab fa-twitter"></i></a> <a
+            class="btn btn-outline-light btn-social"
+            href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+          <a class="btn btn-outline-light btn-social"
+            href="https://www.youtube.com/account"><i
+            class="fab fa-youtube"></i></a> <a
+            class="btn btn-outline-light btn-social"
+            href="https://www.linkedin.com"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Table</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="websitestyle.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+<!-- Header -->
+  <header>
+    <div class="container">
+      
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
+            <a href="" class="navbar-brand p-0">
+                <h1 class=""><img src="img/logo.png" alt="WebSpace Logo" class="logo">Dobu Martial Arts</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0 pe-4">
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="About.html" class="nav-item nav-link">About Us</a>
+                    <a href="Classes.html" class="nav-item nav-link">Classes</a>
+                    <a href="Special.html" class="nav-item nav-link">Special Courses</a>
+                    <a href="Schedule.html" class="nav-item nav-link">Schedule</a>
+                    <a href="Instructors.html" class="nav-item nav-link">Instructors</a>
+                    <a href="Contact.html" class="nav-item nav-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+  </header>
+
+    <section style="margin-top: 100px;margin-left: 20px;">
+            <h1 style="text-align: center;"><i><b>User's Informations</b></i></h1>
+            <div class="container">
+                <h3><b><u><i>Admin View</i></u></b></h3>
+                <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Display User Data</title>
+    </head>
+    <body>
+        <table id="userData">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date Of Birth</th>
+                <th>Email</th>
+                <th>Number</th>
+                <th>City</th>
+                <th>Pin Code</th>
+                <th>State</th>
+                <th>Country</th>
+                <th>Address</th>
+                <th>Condition</th>
+                <th>Gender</th>
+                <th>Have you taken any classes before?</th>
+                <th>Where did you hear about us?</th>
+                <th>Actions</th>
+            </tr>
+        </table>
+    </section>
+
+       <script>
+
+        var data = localStorage.getItem('allFormData');
+
+            // Retrieve all form data from local storage
+            var allFormData = JSON.parse(localStorage.getItem('allFormData'));
+    
+            // Display the retrieved data in table format
+            if (allFormData) {
+                var table = document.getElementById('userData');
+    
+                // Iterate through each form data object
+                allFormData.forEach(function(formData) {
+                    var row = table.insertRow();
+    
+                    var fNameCell = row.insertCell();
+                    fNameCell.textContent = formData.fName;
+
+                    var lNameCell = row.insertCell();
+                    lNameCell.textContent = formData.lName;
+
+                    var dobCell = row.insertCell();
+                    dobCell.textContent = formData.dob;
+    
+                    var emailCell = row.insertCell();
+                    emailCell.textContent = formData.email;
+    
+                    var numberCell = row.insertCell();
+                    numberCell.textContent = formData.number;
+
+                    var cityCell = row.insertCell();
+                    cityCell.textContent = formData.city;
+
+                    var pinCell = row.insertCell();
+                    pinCell.textContent = formData.pin;
+
+                    var stateCell = row.insertCell();
+                    stateCell.textContent = formData.state;
+
+                    var countryCell = row.insertCell();
+                    countryCell.textContent = formData.country;
+
+                    var addressCell = row.insertCell();
+                    addressCell.textContent = formData.address;
+
+                    var conditionCell = row.insertCell();
+                    conditionCell.textContent = formData.condition;
+
+                    var genderCell = row.insertCell();
+                    genderCell.textContent = formData.gender;
+
+                    var checkCell = row.insertCell();
+                    checkCell.textContent = formData.check;
+
+                    var hearCell = row.insertCell();
+                    hearCell.textContent = formData.check;
+    
+                    var actionsCell = row.insertCell();
+                    var deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Delete';
+                    deleteButton.addEventListener('click', function() {
+                        deleteFormData(formData);
+                    });
+                    actionsCell.appendChild(deleteButton);
+    
+                    var editButton = document.createElement('button');
+                    editButton.textContent = 'Edit';
+                    editButton.addEventListener('click', function() {
+                        editFormData(formData);
+                    });
+                    actionsCell.appendChild(editButton);
+
+                    var addButton = document.createElement('button');
+                    addButton.textContent = 'Add';
+                    addButton.addEventListener('click', function() {
+                        addFormData(formData);
+                    });
+                    actionsCell.appendChild(addButton);
+                });
+            }
+    
+            // Function to delete the form data
+            function deleteFormData(formData) {
+                // Retrieve existing form data from local storage
+                var allFormData = JSON.parse(localStorage.getItem('allFormData')) || [];
+    
+                // Find the index of the form data object to delete
+                var index = allFormData.findIndex(function(data) {
+                    return data.userId === formData.userId;
+                });
+    
+                // Remove the form data object from the array
+                if (index !== -1) {
+                    allFormData.splice(index, 1);
+                }
+    
+                // Save the updated form data array to local storage
+                localStorage.setItem('allFormData', JSON.stringify(allFormData));
+    
+                // Refresh the page to reflect the updated data
+                location.reload();
+            }
+    
+            // Function to edit the form data
+        function editFormData(formData) {
+            // Retrieve existing form data from local storage
+            var allFormData = JSON.parse(localStorage.getItem('allFormData')) || [];
+    
+            // Find the index of the form data object to edit
+            var index = allFormData.findIndex(function(data) {
+                return data.userId === formData.userId;
+            });
+    
+            if (index !== -1) {
+                // Prompt the user to enter the updated data
+                var updatedfName = prompt('Enter updated Firstname:', formData.fName);
+                var updatedlName = prompt('Enter updated Lastname:', formData.lName);
+                var updateddob = prompt('Enter updated DateOfBirth:', formData.dob);
+                var updatedemail = prompt('Enter updated Email:', formData.email);
+                var updatednumber = prompt('Enter updated Number:', formData.number);
+                var updatedcity = prompt('Enter updated City:', formData.city);
+                var updatedpin = prompt('Enter updated PinCode:', formData.pin);
+                var updatedstate = prompt('Enter updated State:', formData.state);
+                var updatedcountry = prompt('Enter updated Country:', formData.country);
+                var updatedaddress = prompt('Enter updated Address:', formData.address);
+                var updatedcondition = prompt('Enter updated Condition:', formData.condition);
+    
+                // Update the form data object with the new values
+                allFormData[index].fName = updatedfName;
+                allFormData[index].lName = updatedlName;
+                allFormData[index].dob = updateddob;
+                allFormData[index].email = updatedemail;
+                allFormData[index].number = updatednumber;
+                allFormData[index].city = updatedcity;
+                allFormData[index].pin = updatedpin;
+                allFormData[index].state = updatedstate;
+                allFormData[index].country = updatedcountry;
+                allFormData[index].address = updatedaddress;
+                allFormData[index].condition = updatedcondition;
+    
+                // Save the updated form data array to local storage
+                localStorage.setItem('allFormData', JSON.stringify(allFormData));
+    
+                // Refresh the page to reflect the updated data
+                location.reload();
+            }
+        }
+
+       // function to add new row
+function addFormData() {
+    // Retrieve existing form data from local storage
+    var allFormData = JSON.parse(localStorage.getItem('allFormData')) || [];
+
+    // Prompt the user to enter the new data
+
+    var updatedfName = prompt('Enter a new Firstname:');
+                var updatedlName = prompt('Enter a new Lastname:');
+                var updateddob = prompt('Enter a new DateOfBirth:');
+                var updatedemail = prompt('Enter a new Email:');
+                var updatednumber = prompt('Enter a new Number:');
+                var updatedcity = prompt('Enter a new City:');
+                var updatedpin = prompt('Enter a new PinCode:');
+                var updatedstate = prompt('Enter a new State:');
+                var updatedcountry = prompt('Enter a new Country:');
+                var updatedaddress = prompt('Enter a new Address:');
+                var updatedcondition = prompt('Enter a new Condition:');
+                var updatedGender = prompt('Enter a Gender :');
+                var check = true;
+                var hear = 'From a friend';
+  
+    // Create a new form data object with the input values
+    var newFormData = {
+        fName: updatedfName,
+    lName: updatedlName,
+    dob: updateddob,
+    email: updatedemail,
+    number: updatednumber,
+    city: updatedcity,
+    pin: updatedpin,
+    state: updatedstate,
+    country: updatedcountry,
+    address: updatedaddress,
+    condition: updatedcondition,
+    gender: updatedGender,
+    check: check,
+    hear: hear
+    };
+
+    // Add the new form data object to the existing array
+    allFormData.push(newFormData);
+
+    // Save the updated form data array to local storage
+    localStorage.setItem('allFormData', JSON.stringify(allFormData));
+
+    // Refresh the page to reflect the updated data
+    location.reload();
+}
+        </script>
+            
+        <!-- Footer -->
+  <div
+  class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn"
+  id="contact">
+    <div class="copyright">
+      <div class="row">
+        <div class="col-md-8 text-center text-md-start mb-3 mb-md-0">
+         <a class="border-bottom" href="#"> &copy;Dobu Martial Arts</a> | All Right Reserved.
+        </div>
+        <div class="d-flex col" >
+          <h3>Follow Us>>></h3>
+          <a class="btn btn-outline-light btn-social"
+            href="https://twitter.com/"><i class="fab fa-twitter"></i></a> <a
+            class="btn btn-outline-light btn-social"
+            href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+          <a class="btn btn-outline-light btn-social"
+            href="https://www.youtube.com/account"><i
+            class="fab fa-youtube"></i></a> <a
+            class="btn btn-outline-light btn-social"
+            href="https://www.linkedin.com"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous">
+        </script>
+        <script src="https://kit.fontawesome.com/9d892b4fd1.js" crossorigin="anonymous"></script>
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</body>
+</html>
